@@ -1,14 +1,15 @@
 # Towards Robotic Trash Removal with Autonomous Surface Vessels
 
 **Chinmay Amrutkar¹, Anushka Satav G²**  
-¹,² Masters Students in Robotics and Autonomous Systems (AI), Arizona State University, Tempe, AZ, USA  
+
+Masters Students in Robotics and Autonomous Systems (AI), Arizona State University, Tempe, AZ, USA  
 
 ---
 
 ## Abstract  
 Plastic pollution severely threatens aquatic ecosystems, with Tempe Town Lake increasingly littered by single-use plastics, endangering wildlife and water quality. This project develops an autonomous robotic boat system to detect and remove surface trash using advanced computer vision and digital twin technologies. A YOLOv8-based trash detection system, trained on the 'Waste in Water' dataset (3,798 images, 19 classes), achieved an mAP50 of 0.264 on validation data. Static tests on two images reliably detected 'Plastic Bottle' (up to 0.938, 29 instances) but missed 'Can,' while video tests on a sample video consistently identified 'Plastic bottle' (up to 0.82, ~50 instances), frequently spotted 'Plastic cup' (~30 instances, 0.3–0.68), and occasionally found 'Plastic bag' (~15 instances, up to 0.79), with gaps for smaller items. Validation showed strong performance for 'Plastic Bottle' (mAP50=0.878) but none for 'Can' (mAP50=0.000), suggesting a unified 'trash' class. A Gazebo-integrated PX4 SITL simulation models a robotic boat for real-time trash identification, laying the groundwork for hardware deployment to improve urban lake cleanup.  
 
-**Keywords:** Trash detection, robotic boat, Tempe Town Lake, computer vision, YOLOv8, Gazebo, PX4 SITL, plastic pollution, real-time detection  
+**_Keywords:_** Trash detection, robotic boat, Tempe Town Lake, computer vision, YOLOv8, Gazebo, PX4 SITL, plastic pollution, real-time detection  
 
 ---
 
@@ -55,6 +56,9 @@ The YOLOv8n model was trained on the dataset for 50 epochs over 9.314 hours on a
 #### 3.1.5 Validation and Testing  
 Validation on 157 images (588 instances) yielded an mAP50 of 0.264, with 'Plastic Bottle' at 0.878 but 'Can' at 0.000, suggesting class unification. Testing scripts processed static images and video, confirming strong detection of prominent trash but gaps for smaller items.  
 
+![image](https://github.com/user-attachments/assets/e1e59383-db54-4098-8e9a-d926efc49324)
+
+
 ### 3.2 Gazebo and PX4 SITL Simulation Design  
 
 #### 3.2.1 System Requirements and Setup  
@@ -75,6 +79,10 @@ The boat will follow a lawnmower pattern over 100m x 50m, with YOLOv8 processing
 
 ### 4.1 Trash Detection Performance  
 The YOLOv8 model achieved an mAP50 of 0.264 on validation (157 images, 588 instances). Static tests detected 'Plastic Bottle' accurately (up to 0.938, 29 instances) but missed 'Can.' Video tests consistently spotted 'Plastic bottle' (~50 instances, up to 0.82), often 'Plastic cup' (~30, 0.3–0.68), and occasionally 'Plastic bag' (~15, up to 0.79), with misses for small items. Inference averaged 25–35ms on CPU, meeting speed goals but needing broader class detection.  
+
+![gif trash](https://github.com/user-attachments/assets/6b2fc31c-5150-4175-aed4-c02d18703d5d)
+
+
 
 ### 4.2 Simulation Outcomes  
 The Gazebo-PX4 SITL setup includes a boat with a camera and plugins, operating in a modified boat.world with 20 dummy trash objects. Initial tests showed the camera detecting trash in a virtual Tempe Town Lake, establishing a base for navigation and collection algorithms, with metrics pending further control implementation.  
@@ -99,6 +107,8 @@ The YOLOv8 model, trained on 3,798 images, hit an mAP50 of 0.264, excelling at '
 ---
 
 ## 7. GitHub Link and Project Status  
-**Link:** https://github.com/anushka002/PX4-Robotic-Boat-Lake  
+**Link:** https://github.com/anushka002/PX4-Robotic-Boat-Lake
+
 **Status:** As of March 26, 2025, the project meets mid-term goals. The vision system functions, targeting >90% precision and <80ms inference. The simulation is operational, needing navigation tuning. Next steps include optimization, realism enhancements, and hardware prep.  
+
 **Final Goal:** Integrate real-time detection onto a physical boat, demonstrating autonomous trash survey and simulated collection at Tempe Town Lake.  
