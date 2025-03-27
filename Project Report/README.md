@@ -65,10 +65,11 @@ Validation on 157 images (588 instances) yielded an mAP50 of 0.264, with 'Plasti
 The simulation runs on Ubuntu 22.04 with ROS2 Humble, Gazebo Classic (v11), and PX4 v1.14, using an AMD Ryzen 7 CPU. ROS2 and Gazebo were installed per official guides, with PX4 SITL launched via a standard command, verified by spawning a default boat model.  
 
 #### 3.2.2 Boat Model Modifications  
-A PX4 boat model was enhanced with a 640x640 RGB camera at the bow (90° FOV), streaming to a ROS2 topic. Control parameters set a 0.5 m/s speed and 1m waypoint tolerance for a lawnmower pattern, with a 5 kg, 1m x 0.5m hull for realistic dynamics.  
+A PX4 boat model was enhanced with a 640x640 RGB camera at the bow (90° FOV), streaming to a ROS2 topic. 
 
 #### 3.2.3 Gazebo World Modifications  
 The default boat.world was modified with Tempe Town Lake coordinates (33.4326° N, -111.9321° W) for QGroundControl display. Twenty trash objects (10 spheres, 10 rectangles, 0.01–0.1 kg) were added, floating via a custom libtrashbuoyancy.so plugin. Default daylight is used, with future lighting variations planned. Initial tests confirmed camera detection of trash.  
+
 
 #### 3.2.4 Simulation and Testing  
 The boat will follow a lawnmower pattern over 100m x 50m, with YOLOv8 processing camera data. Ten runs will assess coverage (>95%), detection rate (≥90%), and time (<15 min), integrating vision outputs to adjust navigation, planned for the final phase.  
@@ -80,15 +81,20 @@ The boat will follow a lawnmower pattern over 100m x 50m, with YOLOv8 processing
 ### 4.1 Trash Detection Performance  
 The YOLOv8 model achieved an mAP50 of 0.264 on validation (157 images, 588 instances). Static tests detected 'Plastic Bottle' accurately (up to 0.938, 29 instances) but missed 'Can.' Video tests consistently spotted 'Plastic bottle' (~50 instances, up to 0.82), often 'Plastic cup' (~30, 0.3–0.68), and occasionally 'Plastic bag' (~15, up to 0.79), with misses for small items. Inference averaged 25–35ms on CPU, meeting speed goals but needing broader class detection.  
 
-![gif trash](https://github.com/user-attachments/assets/6b2fc31c-5150-4175-aed4-c02d18703d5d)
 
+
+![image](https://github.com/user-attachments/assets/c86eec59-5805-4902-8c0f-22b839cb5c12)
 
 
 ### 4.2 Simulation Outcomes  
 The Gazebo-PX4 SITL setup includes a boat with a camera and plugins, operating in a modified boat.world with 20 dummy trash objects. Initial tests showed the camera detecting trash in a virtual Tempe Town Lake, establishing a base for navigation and collection algorithms, with metrics pending further control implementation.  
 
+![image](https://github.com/user-attachments/assets/e5b77076-bd41-4ae3-a380-23b2f7de099c)
+
 ### 4.3 Analysis and Visualizations  
 Errors occur in low-contrast settings (15% false negatives), and simulation misses edge objects. Visuals include detection outputs and a survey path with trash overlays, guiding refinements.  
+
+![gif trash](https://github.com/user-attachments/assets/6b2fc31c-5150-4175-aed4-c02d18703d5d)
 
 ---
 
