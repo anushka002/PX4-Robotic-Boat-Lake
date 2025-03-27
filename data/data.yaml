@@ -1,0 +1,13 @@
+train: C:/Users/ANUSHKA/Desktop/TrashDetect/data/train/images
+val: C:/Users/ANUSHKA/Desktop/TrashDetect/data/valid/images
+test: C:/Users/ANUSHKA/Desktop/TrashDetect/data/test/images
+
+nc: 19
+names: ['Bottle cap', 'Can', 'Juice Box', 'Juice box', 'Metal', 'Metal Waste', 'Plastic', 'Plastic Bag', 'Plastic Bottle', 'Plastic Waste', 'Plastic bag', 'Plastic bottle', 'Plastic cup', 'Plastic packaging', 'Plastic-Bottle', 'Undefined trash', 'Wood', 'bottles', 'plastic']
+
+roboflow:
+  workspace: chinatele
+  project: waste-in-water
+  version: 1
+  license: CC BY 4.0
+  url: https://universe.roboflow.com/chinatele/waste-in-water/dataset/1
